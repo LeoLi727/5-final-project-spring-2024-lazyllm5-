@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Transaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif; 
+            background-color: #f4f4f9; 
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px; 
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column; 
+        }
+        label {
+            margin-bottom: 10px; 
+            font-weight: bold; 
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            padding: 8px;
+            margin-bottom: 20px; 
+            border: 1px solid #ccc;
+            border-radius: 4px; 
+        }
+        button {
+            background-color: #5c67f2; 
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer; 
+        }
+        button:hover {
+            background-color: #4a54e1; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Transaction</h1>
+        <form method="post">
+            <label for="item_name">Item Name:</label>
+            <input type="text" id="item_name" name="item_name" value="{{ transaction.item_name }}" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" value="{{ transaction.amount }}" step="0.01" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">--Please select an option--</option>
+                <option value="Groceries" {% if transaction.category == 'Groceries' %}selected{% endif %}>Groceries</option>
+                <option value="Transport" {% if transaction.category == 'Transport' %}selected{% endif %}>Transport</option>
+                <option value="Utilities" {% if transaction.category == 'Utilities' %}selected{% endif %}>Utilities</option>
+                <option value="Entertainment" {% if transaction.category == 'Entertainment' %}selected{% endif %}>Entertainment</option>
+                <option value="Dining" {% if transaction.category == 'Dining' %}selected{% endif %}>Dining</option>
+                <option value="Other" {% if transaction.category == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" value="{{ transaction.date }}" required>
+
+            <button type="submit">Update Transaction</button>
+        </form>
+    </div>
+</body>
+</html>

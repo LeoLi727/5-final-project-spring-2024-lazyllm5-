@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transaction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9; 
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px; 
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px; 
+            box-shadow: 0 0 10px rgba(0,0,0,0.1); 
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column; 
+        }
+        label {
+            margin-bottom: 10px; 
+            font-weight: bold; 
+        }
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        select {
+            padding: 8px;
+            margin-bottom: 20px; 
+            border: 1px solid #ccc;
+            border-radius: 4px; /* Rounded borders for the inputs */
+        }
+        button {
+            background-color: #5c67f2; /* A nice shade of blue */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer; /* Cursor changes to pointer to indicate button */
+        }
+        button:hover {
+            background-color: #4a54e1; /* Slightly darker blue on hover for feedback */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Transaction</h1>
+        <form method="post">
+            <label for="item_name">Item Name:</label>
+            <input type="text" id="item_name" name="item_name" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category" required>
+                <option value="">--Please select an option--</option>
+                <option value="Groceries">Groceries</option>
+                <option value="Transport">Transport</option>
+                <option value="Utilities">Utilities</option>
+                <option value="Entertainment">Entertainment</option>
+                <option value="Dining">Dining</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+
+            <button type="submit">Add Transaction</button>
+        </form>
+    </div>
+</body>
+</html>

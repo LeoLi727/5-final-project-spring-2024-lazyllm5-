@@ -1,0 +1,46 @@
+version: '3.8'
+services:
+  webapp:
+    image: wc2182/webapp:latest
+    ports:
+      - "5001:5000"
+    depends_on:
+      - mongodb
+    environment:
+      - MONGO_URI=mongodb://admin:123456@mongodb:27017/BudgetTracker?authSource=admin
+    networks:
+      - webnet
+
+  mongodb:
+    image: wc2182/mongodb:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - webnet
+# version: '3.8'
+# services:
+#   webapp:
+#     build: ./webapp
+#     ports:
+#       - "8000:5000"
+#     depends_on:
+#       - mongodb
+#     networks:
+#       - webnet
+
+#   mongodb:
+#     build: ./mongodb
+#     ports:
+#       - "27017:27017"
+#     volumes:
+#       - mongodb_data:/data/db
+#     networks:
+#       - webnet
+
+networks:
+  webnet:
+
+volumes:
+  mongodb_data:
